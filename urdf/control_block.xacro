@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="mobile_robot_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- *********************************************************************** -->
+
+<xacro:include filename="$(find mobile_robot_base_ros1)/urdf/common_macro.xacro" />
+
+<!-- *********************************************************************** -->
+
+<xacro:macro 
+    name="control_block" 
+    params="
+        link_name  
+        length
+        width
+        height
+        mass">
+    <link name="${link_name}">
+        <visual>
+            <origin 
+                rpy= "0 0 0"
+                xyz= "0 0 ${height/2}"/>
+            <geometry>
+                <box size="${length} ${width} ${height}"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin 
+                rpy= "0 0 0"
+                xyz= "0 0 ${height/2}"/>
+            <geometry>
+                <box size="${length} ${width} ${height}"/>
+            </geometry>
+        </collision>
+        <material name="Red">
+            <color rgba="1.0 0.0 0.0 1.0"/>
+        </material>
+        <xacro:inertial_matrix mass="${mass}"/>
+    </link>
+</xacro:macro>
+</robot>

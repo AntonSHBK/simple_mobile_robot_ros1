@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="my_model">
+    <static>true</static>
+    <link name="link_loooool">
+      <collision name="collision">        
+        <geometry>
+          <!-- <box>
+            <size>0.5 0.5 0.5</size>
+          </box> -->
+          <mesh>
+            <uri>model://my_model/meshes/shelf_pin.stl</uri>
+            <scalar>0.1 0.1 0.1</scalar>
+          </mesh>        
+        </geometry>
+        <!-- <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface> -->
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <!-- <box>
+            <size>0.5 0.5 0.5</size>
+          </box> -->
+          <mesh>
+            <uri>model://my_model/meshes/shelf_pin.stl</uri>
+            <scale>0.01 0.01 0.01</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://my_model/materials/scripts</uri>
+            <uri>model://my_model/materials/textures</uri>
+            <name>my_material/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
