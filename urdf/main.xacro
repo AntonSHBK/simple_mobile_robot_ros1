@@ -47,6 +47,8 @@
 <xacro:property name="wheel_width" value="0.05"/>
 <xacro:property name="wheel_mass" value="1.0"/>
 
+<xacro:property name="hinge_wheel_limit" value="${PI/3}"/>
+
 <!-- *********************************************************************** -->
 
 <xacro:corpus 
@@ -82,13 +84,29 @@
     radius="${wheel_radius}"
     length="${wheel_width}"
     mass="${wheel_mass}"/>
-
-<!-- Add joints and transmission for 4 weel -->
+    
+<!-- Front left weel -->
 <!-- *********************************************************************** -->
 
 <joint name="front_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="front_left_wheel_link"/>
+    <axis xyz="0 0 1"/>
+    <origin
+        xyz="${(corpus_len/2)-(wheel_radius)} ${(corpus_width/2)+(wheel_width/2)} 0" 
+        rpy="${PI/2} 0 0" /> 
+    <limit effort= "30" velocity="1.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+
+<xacro:Transmission_rotation_block joint_name="front_left_wheel_joint"/>
+
+<!-- Front right wheel -->
+<!-- *********************************************************************** -->
+
+<joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel_link"/>
     <axis xyz="0 0 1"/>
     <origin
         xyz="${(corpus_len/2)-(wheel_radius)} ${(-corpus_width/2)-(wheel_width/2)} 0" 
@@ -97,28 +115,30 @@
     <dynamics damping="0.0" friction="0.0"/>
 </joint>
 
-<xacro:Transmission_rotation_block joint_name="front_left_wheel_joint"/>
-
-<!-- *********************************************************************** -->
-
-<joint name="front_right_wheel_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="front_right_wheel_link"/>
-    <axis xyz="0 0 1"/>
-    <origin
-        xyz="${(corpus_len/2)-(wheel_radius)} ${(+corpus_width/2)+(wheel_width/2)} 0" 
-        rpy="${PI/2} 0 0" /> 
-    <limit effort= "30" velocity="1.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
-</joint>
-
 <xacro:Transmission_rotation_block joint_name="front_right_wheel_joint"/>
 
+<!-- Back left wheel -->
 <!-- *********************************************************************** -->
 
 <joint name="back_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="back_left_wheel_link"/>
+    <axis xyz="0 0 1"/>
+    <origin
+        xyz="${(-corpus_len/2)+(wheel_radius)} ${(+corpus_width/2)+(wheel_width/2)} 0" 
+        rpy="${PI/2} 0 0" /> 
+    <limit effort= "30" velocity="1.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+
+<xacro:Transmission_rotation_block joint_name="back_left_wheel_joint"/>
+
+<!-- Back right wheel -->
+<!-- *********************************************************************** -->
+
+<joint name="back_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="back_right_wheel_link"/>
     <axis xyz="0 0 1"/>
     <origin
         xyz="${(-corpus_len/2)+(wheel_radius)} ${(-corpus_width/2)-(wheel_width/2)} 0" 
@@ -127,24 +147,9 @@
     <dynamics damping="0.0" friction="0.0"/>
 </joint>
 
-<xacro:Transmission_rotation_block joint_name="back_left_wheel_joint"/>
-
-<!-- *********************************************************************** -->
-
-<joint name="back_right_wheel_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="back_right_wheel_link"/>
-    <axis xyz="0 0 1"/>
-    <origin
-        xyz="${(-corpus_len/2)+(wheel_radius)} ${(corpus_width/2)+(wheel_width/2)} 0" 
-        rpy="${PI/2} 0 0" /> 
-    <limit effort= "30" velocity="1.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
-</joint>
-
 <xacro:Transmission_rotation_block joint_name="back_right_wheel_joint"/>
 
-
+<!-- Conntrol block -->
 <!-- *********************************************************************** -->
 
 <xacro:control_block 
@@ -160,6 +165,7 @@
     <origin xyz="${-corpus_len/2+0.25} 0.0 ${corpus_height/2}" rpy="0 0 0"/>
 </joint>
 
+<!-- Camera -->
 <!-- *********************************************************************** -->
 
 <xacro:camera 
@@ -169,22 +175,15 @@
     height="0.1"
     mass="1"/>
 
-<joint name="camera_joint" type="fixed">
+<joint name="camera_joint" type="continuous">
     <parent link="base_link"/>
     <child link="camera_link"/>
+    <axis xyz="0 0 1"/>
     <origin xyz="${corpus_len/2-0.05} 0.0 ${corpus_height/2}" rpy="0 0 0"/>
+    <limit effort="30" velocity="1.0"/>
 </joint>
 
-<!-- *********************************************************************** -->
-
-
-<!-- *********************************************************************** -->
-
-
-<!-- *********************************************************************** -->
-
-
-<!-- *********************************************************************** -->
+<xacro:Fixed_rotation_block joint_name="camera_joint"/>
 
 
 <!-- *********************************************************************** -->
@@ -196,8 +195,3 @@
 </gazebo>
 
 </robot>
-
-<!-- 
-    rosrun xacro xacro main.xacro > main.urdf
-    gz sdf -p main.urdf > main.sdf 
--->

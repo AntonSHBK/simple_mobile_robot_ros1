@@ -1,26 +1,9 @@
 <?xml version="1.0" ?>
-
-<sdf version="1.4">
-  <world name="default">
-    <scene>
-      <ambient>0 0 0 1</ambient>
-      <shadows>0</shadows>
-      <grid>0</grid>
-      <background>0.7 0.7 0.7 1</background>
-    </scene>
-
-    <include>
-      <uri>model://sun</uri>
-    </include>
-
-    <include>
-      <uri>model://map_ground</uri>
-    </include>
-
-    <!-- <model name="map_groung">
+<sdf version="1.7">
+  <model name="map_ground">
       <pose>0.0 0.0 -0.1 0 0 0</pose>
       <static>1</static>
-      <link name="map_groung_link">
+      <link name="map_ground_link">
         <collision name="ground_coll">
           <geometry>
             <box>
@@ -41,13 +24,12 @@
           </geometry>
           <material>
             <script>
-              <uri>file://map_ground.material</uri>
+              <uri>file://map_ground/materials/scripts</uri>
+              <uri>file://map_ground/materials/textures</uri>
               <name>map_ground</name>
             </script>
           </material>
         </visual>
       </link>
-    </model> -->
-
-  </world> 
+    </model>
 </sdf>

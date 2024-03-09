@@ -23,6 +23,9 @@
             <geometry>
                 <box size="${length} ${width} ${height}"/>
             </geometry>
+            <material name="Red">
+                <color rgba="1.0 0.0 0.0 1.0"/>
+            </material>
         </visual>
         <collision>
             <origin 
@@ -32,10 +35,10 @@
                 <box size="${length} ${width} ${height}"/>
             </geometry>
         </collision>
-        <material name="Red">
-            <color rgba="1.0 0.0 0.0 1.0"/>
-        </material>
         <xacro:inertial_matrix mass="${mass}"/>
     </link>
+    <gazebo reference ="${link_name}">
+        <material>Gazebo/Red</material>
+     </gazebo>
 </xacro:macro>
 </robot>

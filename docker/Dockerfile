@@ -41,14 +41,15 @@ RUN apt-get update && \
     ros-noetic-gazebo-ros-control
 
 # Other
-# RUN apt-get update && \
-#     apt-get install -y \
-#     ros-noetic-control-toolbox \
-#     ros-noetic-realtime-tools \
-#     ros-noetic-ros-controllers \
-#     ros-noetic-xacro python3-wstool \
-#     ros-noetic-tf-conversions \
-#     ros-noetic-kdl-parser
+RUN apt-get update && \
+    apt-get install -y \
+    ros-noetic-control-toolbox \
+    ros-noetic-realtime-tools \
+    ros-noetic-ros-controllers \
+    ros-noetic-xacro \
+    python3-wstool \
+    ros-noetic-tf-conversions \
+    ros-noetic-kdl-parser
 
 # Development tools
 RUN apt-get update && \
@@ -60,9 +61,9 @@ RUN apt-get update && \
 
 
 # install python dependencies
-# COPY ./requirements.txt /tmp/requirements.txt
-# RUN pip install --upgrade pip
-# RUN pip install -r /tmp/requirements.txt
+COPY ../requirements.txt /tmp/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r /tmp/requirements.txt
 
 # added ros source
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc

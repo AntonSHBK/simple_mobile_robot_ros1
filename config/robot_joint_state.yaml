@@ -1,3 +1,23 @@
 joint_state_controller:
   type: "joint_state_controller/JointStateController"
   publish_rate: 50
+
+camera_controller:
+  type: "position_controllers/JointPositionController"
+  joint: camera_joint
+
+front_left_wheel_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: front_left_wheel_joint
+
+front_right_wheel_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: front_right_wheel_joint
+
+back_left_wheel_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: back_left_wheel_joint
+
+back_right_wheel_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: back_right_wheel_joint

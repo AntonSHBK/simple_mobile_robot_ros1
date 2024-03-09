@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>mobile_robot_base_ros1</name>
-  <version>0.0.0</version>
-  <description>
-    Base project for mobile platform
-  </description>
+  <version>0.0.1</version>
+  <description>Base project for mobile platform</description>
   <maintainer email="anton42@yandex.ru">Anton Pisarenko</maintainer>
   <license>MIT</license>
 
@@ -49,11 +47,22 @@
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>rqt_robot_steering</exec_depend>
 
+  <depend>geometry_msgs</depend>
+  <depend>libopencv-dev</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>video_stream_opencv</depend>
+  <depend>python3-opencv</depend>
+
+
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- For models path -->
     <gazebo_ros gazebo_model_path="${prefix}/models" />
     <gazebo_ros gazebo_media_path="${prefix}/models" />
+
+    <gazebo_ros gazebo_model_path="${prefix}/world" />
+    <gazebo_ros gazebo_media_path="${prefix}/world" />
   </export>
 
 </package>

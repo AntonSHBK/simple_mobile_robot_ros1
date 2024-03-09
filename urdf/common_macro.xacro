@@ -63,13 +63,26 @@
 <xacro:macro name="Transmission_rotation_block" params="joint_name">
     <transmission name="${joint_name}_rotation_trans">
         <type>transmission_interface/SimpleTransmission</type>
-        <actuator name="${joint_name}_rotation_motor">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <actuator name="${joint_name}_motor">
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
-            <joint name="${joint_name}">
-            <hardwareInterface>VelocityJointInterface</hardwareInterface>
+        <joint name="${joint_name}">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </joint>
     </transmission>
+</xacro:macro>
+
+<!-- *********************************************************************** -->
+<!--Fixed cilinder block-->
+<xacro:macro name="Fixed_rotation_block" params="joint_name">
+    <transmission name="${joint_name}_fixed_rotation">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="$${joint_name}_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="${joint_name}">
+          <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
 </xacro:macro>
 </robot>
