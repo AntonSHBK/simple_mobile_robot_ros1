@@ -3,6 +3,31 @@
 ![Gazebo + OpenCV](/imgs/gazebo_camera.jpg)
 
 
+Requirements:
+- f
+- g
+- f
+  
+#### For the developers only
+##### 1. Create **catkinized**  workspace.
+##### 2. Clone this repository.
+```bash
+cd <catkin_ws>/src
+git clone https://github.com/CIR-KIT-Unit03/cirkit_unit03_common.git
+```
+##### 4. Download depended packages by rosdep.
+```bash
+cd <catkin_ws>
+rosdep install -i -r -y --from-paths src --ignore-src
+```
+##### 5. Build packages, and set the path for the packages.
+```bash
+cd <catkin_ws>
+catkin_make
+source devel/setup.bash
+```
+
+
 Tree's project:
 ```
 .
@@ -66,3 +91,9 @@ Tree's project:
     ├── map.jpg
     └── map_ground.material
 ```
+
+
+
+
+
+

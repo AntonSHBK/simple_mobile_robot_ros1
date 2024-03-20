@@ -49,7 +49,8 @@ RUN apt-get update && \
     ros-noetic-xacro \
     python3-wstool \
     ros-noetic-tf-conversions \
-    ros-noetic-kdl-parser
+    ros-noetic-kdl-parser \
+    liburdfdom-tools
 
 # Development tools
 RUN apt-get update && \

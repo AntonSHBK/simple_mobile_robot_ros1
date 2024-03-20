@@ -20,7 +20,7 @@ void commandsCallback(const std_msgs::String::ConstPtr& msg) {
   }
   else if(command == "GO_REALLY_FAST")
   {
-    leftSpeed = -10.0; // radians per second
+    leftSpeed = -10.0;
     rightSpeed = -10.0;
   }
   else if(command == "BACK") 
@@ -40,7 +40,7 @@ void commandsCallback(const std_msgs::String::ConstPtr& msg) {
   } 
   else 
   {
-    leftSpeed = 0.0;  // Stop the robot
+    leftSpeed = 0.0;
     rightSpeed = 0.0;
   }
 
