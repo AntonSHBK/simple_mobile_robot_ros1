@@ -39,7 +39,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/mobile_robot_base_ros1.git
+   git clone https://github.com/AntonSHBK/mobile_robot_base_ros1.git
    ```
 
 2. **Build the project using catkin_make:**
@@ -63,6 +63,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - **Launch the simulation environment in Gazebo and RViz:**
   ```bash
+  source devel/setup.bash
   roslaunch mobile_robot_base_ros1 robot_base.launch
   ```
 
@@ -77,7 +78,7 @@ The custom world can be modified by editing the `empty_world.world` file located
 
 ## Authors
 
-- **Your Name** - *Initial work* - [YourUsername](https://github.com/YourUsername)
+- **Anton Pisarenko** - *Initial work* - [AntonSHBK](https://github.com/AntonSHBK)
 
 ## License
 
