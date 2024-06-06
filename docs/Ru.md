@@ -36,6 +36,7 @@
   - [7. Описание файлов запуска](#7-описание-файлов-запуска)
   - [8. Симуляция в Gazebo и Rviz](#8-симуляция-в-gazebo-и-rviz)
   - [9. Заключение](#9-заключение)
+  - [Цитирование](#цитирование)
   - [Контакты](#контакты)
 
 **Исходный код:**
@@ -2194,6 +2195,19 @@ roslaunch mobile_robot_base_ros1 robot_base.launch
 
 **Дальнейшие направления развития проекта:**
 В дальнейшем планируется расширение функциональности робота за счет интеграции дополнительных сенсоров и исполнительных механизмов, улучшение алгоритмов навигации и управления, а также разработка более сложных сценариев взаимодействия с окружающей средой.
+
+## Цитирование
+
+```latex
+@misc{pisarenko2023mobile,
+  author = {Pisarenko, Anton},
+  title = {Mobile Robot Simulation in {ROS} Noetic and Gazebo},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/AntonSHBK/mobile_robot_base_ros1}}
+}
+```
 
 ## Контакты
 * [Telegram](https://t.me/antonSHBK);

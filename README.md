@@ -83,3 +83,16 @@ The custom world can be modified by editing the `empty_world.world` file located
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Citation
+
+```latex
+@misc{pisarenko2023mobile,
+  author = {Pisarenko, Anton},
+  title = {Mobile Robot Simulation in {ROS} Noetic and Gazebo},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/AntonSHBK/mobile_robot_base_ros1}}
+}
+```
