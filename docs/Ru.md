@@ -1,4 +1,4 @@
-# Простая имитационная модель четырехколесной платформы в ROS и Gazebo
+# Простая имитационная модель мобильного робота в ROS и Gazebo
 
 <img src="https://github.com/AntonSHBK/mobile_robot_base_ros1/blob/main/imgs/priview.jpg?raw=true" alt="Симуляция проекта" width="900">
 
@@ -20,7 +20,7 @@
 
 **Содержание:**
 
-- [Простая имитационная модель четырехколесной платформы в ROS и Gazebo](#простая-имитационная-модель-четырехколесной-платформы-в-ros-и-gazebo)
+- [Простая имитационная модель мобильного робота в ROS и Gazebo](#простая-имитационная-модель-мобильного-робота-в-ros-и-gazebo)
   - [1. В общих чертах об имитационном моделировании](#1-в-общих-чертах-об-имитационном-моделировании)
   - [2. Установка и настройка](#2-установка-и-настройка)
   - [3. Создание проекта](#3-создание-проекта)
@@ -32,7 +32,7 @@
   - [5. Написание ROS нод](#5-написание-ros-нод)
     - [5.1 Нода упралвения колёсами](#51-нода-упралвения-колёсами)
     - [5.2 Нода камеры](#52-нода-камеры)
-  - [6. Описание формирвания собственного мира дял Gazebo](#6-описание-формирвания-собственного-мира-дял-gazebo)
+  - [6. Описание формирования собственного мира дял Gazebo](#6-описание-формирования-собственного-мира-дял-gazebo)
   - [7. Описание файлов запуска](#7-описание-файлов-запуска)
   - [8. Симуляция в Gazebo и Rviz](#8-симуляция-в-gazebo-и-rviz)
   - [9. Заключение](#9-заключение)
@@ -1458,7 +1458,7 @@ gazebo_ros_control:
 <details>
   <summary>Раскрыть код</summary>
 
-```c++
+```cpp
 #include <iostream>
 #include <string>
 #include "ros/ros.h"
@@ -1556,7 +1556,9 @@ int main(int argc, char **argv) {
 <details>
   <summary>Раскрыть код</summary>
 
-```py
+```python
+#!/usr/bin/env python
+
 import tkinter as tk  # Импорт библиотеки tkinter для создания графического интерфейса
 from std_msgs.msg import String  # Импорт типа сообщения String из пакета std_msgs
 import rospy  # Импорт библиотеки rospy для работы с ROS в Python
@@ -1607,7 +1609,7 @@ if __name__ == "__main__":
 
 </details>
 
-<img src="https://github.com/AntonSHBK/mobile_robot_base_ros1/blob/main/imgs/gui_window.jpg?raw=true" alt="Модель мобильного робота в rviz" height="400">
+<img src="https://github.com/AntonSHBK/mobile_robot_base_ros1/blob/main/imgs/gui_window.jpg?raw=true" alt="Окно графического пралвления" height="400">
 
 **Технические детали:**
 - **ROS Publishers**: Для каждого колеса создаются отдельные паблишеры, которые отправляют сообщения типа `std_msgs/Float64` в топики управления соответствующих колёс.
@@ -1706,7 +1708,7 @@ rostopic bw /name_of_topic
 <details>
   <summary>Раскрыть код</summary>
 
-```py
+```python
 #!/usr/bin/env python
 
 import rospy
@@ -1768,9 +1770,9 @@ if __name__ == '__main__':
 
 </details>
 
-<img src="https://github.com/AntonSHBK/mobile_robot_base_ros1/blob/main/imgs/camera_window.jpg?raw=true" alt="Модель мобильного робота в rviz" height="600">
+<img src="https://github.com/AntonSHBK/mobile_robot_base_ros1/blob/main/imgs/camera_window.jpg?raw=true" alt="Окно десонтсрации изображения с камеры" height="600">
 
-## 6. Описание формирвания собственного мира дял Gazebo
+## 6. Описание формирования собственного мира дял Gazebo
 
 Создание собственного мира в Gazebo позволяет пользователю контролировать все аспекты симуляционной среды, что важно для тестирования и разработки робототехнических систем. Настраиваемый мир `empty_world.world` будет использовать модель `map_ground`, описывающую плоскую поверхность с текстурами топографичсекой карты.
 
