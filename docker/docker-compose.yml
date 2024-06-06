@@ -1,16 +1,15 @@
-version: '4'
+version: '4'  # Docker Compose syntax version
 
-name: mobile-robot-base-ros1
+name: mobile-robot-base-ros1  # Project name
 
-services:
-  ros-noetic-master:
-    build:
-      context: ../
-      dockerfile: ./docker/Dockerfile
-    working_dir: /workspace        
-    volumes:
-      - ../:/workspace/src/mobile_robot_base_ros1
-    env_file:
-      - ./.env
-    tty: true
-
+services:  # Definition of services to be run in containers
+  ros-noetic-master:  # Service name
+    build:  # Instructions for building the image
+      context: ../  # Build context, the base directory for building
+      dockerfile: ./docker/Dockerfile  # Path to the Dockerfile relative to the context
+    working_dir: /workspace  # Working directory inside the container
+    volumes:  # Volumes attached to the container
+      - ../:/workspace/src/mobile_robot_base_ros1  # Mounting the project folder from the host to the container
+    env_file:  # Environment variables file
+      - ./.env  # Path to the environment variables file
+    tty: true  # Enable TTY mode, allowing the use of an interactive terminal in the container

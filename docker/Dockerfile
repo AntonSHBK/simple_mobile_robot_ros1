@@ -22,7 +22,8 @@ RUN apt-get update && \
     apt-get install -y \
     curl \
     wget \
-    python3-pip
+    python3-pip \
+    python3-tk 
 
 # Gazebo 11
 RUN sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'

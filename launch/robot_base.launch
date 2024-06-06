@@ -2,50 +2,45 @@
 <launch>
 
 <!-- *********************************************************************** -->
+<!-- Arguments for URDF model, RViz configuration file -->
 <arg name="model" default="$(find mobile_robot_base_ros1)/urdf/main.xacro"/>
 <arg name="rvizconfig" default="$(find mobile_robot_base_ros1)/rviz/base.rviz"/>
 
-<arg name="joint_state" default="$(find mobile_robot_base_ros1)/config/robot_joint_state.yaml"/>
-
 <!-- *********************************************************************** -->
-<!-- Launch gazebo -->
+<!-- Launch Gazebo environment -->
 <include file="$(find mobile_robot_base_ros1)/launch/gazebo.launch">
     <arg name="model" value="$(arg model)"/>
 </include>
 
 <!-- *********************************************************************** -->
-<!-- Launch rviz -->
+<!-- Launch RViz -->
 <include file="$(find mobile_robot_base_ros1)/launch/rviz.launch">
     <arg name="model" value="$(arg model)"/>
     <arg name="rvizconfig" value="$(arg rvizconfig)"/>
-    <arg name="joint_state" value="$(arg joint_state)"/>
 </include>
 
 <!-- *********************************************************************** -->
-<!-- Load joint controller configuration from YAML file to parameter server -->
-<rosparam file="$(arg joint_state)" command="load"/>
+<!-- Run controller node -->
+<node 
+    pkg="mobile_robot_base_ros1" 
+    type="simple_motor_controller" 
+    name="simple_motor_controller"
+    output="screen"/>
 
 <!-- *********************************************************************** -->
-<!-- Load the controllers -->
-<!-- Аргументы  args из файла который подгружаем (load.yml), их имено, можно строить древовидную струтуру -->
-<node name="robot_base_controllers_spawner" 
-    pkg="controller_manager" 
-    type="spawner"
-    respawn="false" 
-    output="screen" 
-    args="
-        joint_state_controller
-        camera_controller
-
-        front_left_wheel_controller
-        front_right_wheel_controller
-
-        back_left_wheel_controller
-        back_right_wheel_controller"/>
+<!-- Run GUI node -->
+<node 
+    pkg="mobile_robot_base_ros1" 
+    type="control_gui.py" 
+    name="control_gui"
+    output="screen"/>
 
 <!-- *********************************************************************** -->
+<!-- Run camera node -->
+<node 
+    pkg="mobile_robot_base_ros1" 
+    type="camera_view.py" 
+    name="camera_view"
+    output="screen"/>
 
 </launch>
-
-
-    

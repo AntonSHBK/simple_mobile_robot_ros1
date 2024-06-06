@@ -2,20 +2,22 @@
 <robot name="mobile_robot_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- *********************************************************************** -->
-<!-- Cilinder inertial -->
+<!-- Macro for cylinder inertial model -->
 <xacro:macro name="cylinder_inertia" params ="m r h">
   <inertial>
-   <mass value="${m}"/>
+   <mass value="${m}"/> <!-- Cylinder mass -->
+   <!-- Formulas to calculate inertia moments for cylinder -->
    <inertia ixx="${m*(3*r*r+h*h)/12}"  ixy="0.0" ixz="0.0"
             iyy="${m*(3*r*r+h*h)/12}"  iyz="0.0" izz="${m*r*r/2}"/>
    </inertial>
 </xacro:macro>
 
 <!-- *********************************************************************** -->
-<!-- Base inertial matrix -->
+<!-- Macro for base inertial model -->
 <xacro:macro name= "inertial_matrix" params="mass">
   <inertial>
-    <mass value="${mass}"/>
+    <mass value="${mass}"/> <!-- Base mass -->
+    <!-- Set identity matrix for inertia moments -->
     <inertia 
         ixx="1.0" ixy="0.0"
         iyy="1.0" iyz="0.0"
@@ -25,10 +27,12 @@
 
 <!-- *********************************************************************** -->
 
-<!-- <xacro:macro name="inertial_sphere" params="mass radius *origin">
+<!-- Macro for sphere inertial model -->
+<xacro:macro name="inertial_sphere" params="mass radius *origin">
     <inertial>
         <xacro:insert_block name="origin"/>
-        <mass value="${mass}" />
+        <mass value="${mass}" /> <!-- Sphere mass -->
+        <!-- Formulas to calculate inertia moments for sphere -->
         <inertia ixx="${(2/5) * mass * (radius*radius)}" ixy="0.0" ixz="0.0"
                 iyy="${(2/5) * mass * (radius*radius)}" iyz="0.0"
                 izz="${(2/5) * mass * (radius*radius)}" />
@@ -39,7 +43,8 @@
 <xacro:macro name="inertial_box" params="mass x y z *origin">
     <inertial>
         <xacro:insert_block name="origin"/>
-        <mass value="${mass}" />
+        <mass value="${mass}" /> <!-- Box mass -->
+        <!-- Formulas to calculate inertia moments for box -->
         <inertia ixx="${(1/12) * mass * (y*y+z*z)}" ixy="0.0" ixz="0.0"
                 iyy="${(1/12) * mass * (x*x+z*z)}" iyz="0.0"
                 izz="${(1/12) * mass * (x*x+y*y)}" />
@@ -50,16 +55,17 @@
 <xacro:macro name="inertial_cylinder" params="mass length radius *origin">
     <inertial>
         <xacro:insert_block name="origin"/>
-        <mass value="${mass}" />
+        <mass value="${mass}" /> <!-- Cylinder mass -->
+        <!-- Formulas to calculate inertia moments for cylinder -->
         <inertia ixx="${(1/12) * mass * (3*radius*radius + length*length)}" ixy="0.0" ixz="0.0"
                 iyy="${(1/12) * mass * (3*radius*radius + length*length)}" iyz="0.0"
                 izz="${(1/2) * mass * (radius*radius)}" />
     </inertial>
-</xacro:macro> -->
+</xacro:macro>
 
 
 <!-- *********************************************************************** -->
-<!--Transmission cilinder block-->
+<!-- Transmission block for cylinder rotation -->
 <xacro:macro name="Transmission_rotation_block" params="joint_name">
     <transmission name="${joint_name}_rotation_trans">
         <type>transmission_interface/SimpleTransmission</type>
@@ -73,7 +79,7 @@
 </xacro:macro>
 
 <!-- *********************************************************************** -->
-<!--Fixed cilinder block-->
+<!-- Fixed transmission block for cylinder rotation -->
 <xacro:macro name="Fixed_rotation_block" params="joint_name">
     <transmission name="${joint_name}_fixed_rotation">
         <type>transmission_interface/SimpleTransmission</type>

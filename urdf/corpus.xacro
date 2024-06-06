@@ -3,10 +3,12 @@
 
 <!-- *********************************************************************** -->
 
+<!-- Including a common macro -->
 <xacro:include filename="$(find mobile_robot_base_ros1)/urdf/common_macro.xacro" />
 
 <!-- *********************************************************************** -->
 
+<!-- Macro for creating the robot body -->
 <xacro:macro 
     name="corpus" 
     params="
@@ -16,6 +18,7 @@
         height
         mass">
     <link name="${link_name}">
+        <!-- Visual representation of the body -->
         <visual>
             <origin 
                 rpy= "0 0 0"
@@ -23,10 +26,12 @@
             <geometry>
                 <box size="${length} ${width} ${height}"/>
             </geometry>
+            <!-- Material for visualization in blue color -->
             <material name="Blue">
                 <color rgba="0.0 0.0 1.0 1.0"/>
             </material>
         </visual>
+        <!-- Collision representation of the body -->
         <collision>
              <origin 
                 rpy= "0 0 0"
@@ -35,9 +40,11 @@
                 <box size="${length} ${width} ${height}"/>
             </geometry>
         </collision>
+        <!-- Calculation of the inertial matrix for the body -->
         <xacro:inertial_matrix mass="${mass}"/>
     </link>
 
+    <!-- Specifying material for visualization in the Gazebo environment -->
     <gazebo reference ="${link_name}">
         <material>Gazebo/Blue</material>
      </gazebo>

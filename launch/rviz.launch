@@ -5,8 +5,6 @@
 <arg name="model" default="$(find mobile_robot_base_ros1)/urdf/main.xacro"/>
 <arg name="rvizconfig" default="$(find mobile_robot_base_ros1)/rviz/base.rviz"/>
 
-<arg name="joint_state" default="$(find mobile_robot_base_ros1)/config/robot_joint_state.yaml"/>
-
 <!-- *********************************************************************** -->
 <!-- Load the URDF into the ROS Parameter Server -->
 <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
@@ -22,17 +20,17 @@
     type="robot_state_publisher">
 </node>
 
-<node 
+<!-- <node 
     name="joint_state_publisher_gui" 
     pkg="joint_state_publisher_gui" 
     type="joint_state_publisher_gui" >
-</node>
+</node> -->
 
-<!-- <node 
+<node 
     name="joint_state_publisher" 
     pkg="joint_state_publisher" 
     type="joint_state_publisher" >
-</node> -->
+</node>
 
 <!-- *********************************************************************** -->
 
