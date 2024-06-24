@@ -64,8 +64,9 @@ RUN apt-get update && \
 
 # install python dependencies
 COPY ../requirements.txt /tmp/requirements.txt
-RUN pip install --upgrade pip
-RUN pip install -r /tmp/requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r /tmp/requirements.txt && \
+    rm -rf /root/.cache/pip
 
 # added ros source
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
