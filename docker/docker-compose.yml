@@ -1,5 +1,3 @@
-version: '4'  # Docker Compose syntax version
-
 name: mobile-robot-base-ros1  # Project name
 
 services:  # Definition of services to be run in containers
